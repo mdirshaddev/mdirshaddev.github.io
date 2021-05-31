@@ -1,0 +1,103 @@
+{
+  "name": "mdirshaddev.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio project",
+  "main": "index.jsx",
+  "type": "commonjs",
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "webpack:start": "webpack serve --config ./webpack/webpack.config.js --env env=development",
+    "webpack:build": "webpack --config ./webpack/webpack.config.js --env env=production",
+    "webpack:analyze": "npm run webpack:build -- --env addon=bundleanalyzer",
+    "serve": "serve -s build/",
+    "serve:webpack:analyze": "serve -s report/",
+    "postcss": "postcss ./src/assets/scss/index.scss --dir ./src/assets/css --ext css --verbose --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "jsDocs": "jsdoc -c jsdoc.conf.json",
+    "sassDocs": "sassdoc -c sassdoc.conf.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdirshaddev/mdirshaddev.github.io.git"
+  },
+  "keywords": [
+    "Webpack5",
+    "ReactJS",
+    "Sentry",
+    "Redux",
+    "TailwindCSS",
+    "Storybook",
+    "JSDoc",
+    "SassDoc"
+  ],
+  "author": {
+    "name": "Md Irshad",
+    "email": "mdirshaddev@gmail.com",
+    "url": "https://mdirshaddev.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdirshaddev/mdirshaddev.github.io/issues"
+  },
+  "homepage": "https://github.com/mdirshaddev/mdirshaddev.github.io#readme",
+  "dependencies": {
+    "firebase": "^8.6.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.2",
+    "@babel/plugin-transform-react-constant-elements": "^7.13.13",
+    "@babel/plugin-transform-react-inline-elements": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "@tailwindcss/jit": "^0.1.18",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.12.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "clean-jsdoc-theme": "^3.2.7",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.6",
+    "css-minimizer-webpack-plugin": "^3.0.0",
+    "dotenv-webpack": "^7.0.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "jsdoc": "^3.6.7",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss": "^8.3.0",
+    "postcss-advanced-variables": "^2.3.3",
+    "postcss-cli": "^8.3.1",
+    "postcss-discard-comments": "^5.0.1",
+    "postcss-loader": "^5.3.0",
+    "postcss-map-get": "^0.3.0",
+    "postcss-nested": "^5.0.5",
+    "postcss-scss": "^3.0.5",
+    "react-hot-loader": "^4.13.0",
+    "sassdoc": "^2.7.3",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.1.2",
+    "terser-webpack-plugin": "^5.1.2",
+    "webpack": "^5.37.1",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3",
+    "webpack-pwa-manifest": "^4.3.0"
+  },
+  "resolutions": {
+    "dns-packet": "^5.2.3",
+    "pug": "^3.0.1",
+    "marked": "^0.7.0"
+  }
+}
