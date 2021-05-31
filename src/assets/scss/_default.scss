@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Raleway:ital,wght@0,100;0,200;0,600;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+/**
+ * hiding scrollbar
+ */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+  background-color: green;
+  background-blend-mode: screen;
+}
+
+div, span, section, li, nav {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}

@@ -9,3 +9,7 @@
 
 # misc
 .env
+.dccache
+target
+# not needed now
+.github

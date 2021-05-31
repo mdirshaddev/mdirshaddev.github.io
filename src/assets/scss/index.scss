@@ -1,0 +1,15 @@
+@import './default';
+@import './variable';
+@import './partials';
+
+/**
+  Tailwind imports
+*/
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind screens;
+
+@tailwind utilities;
