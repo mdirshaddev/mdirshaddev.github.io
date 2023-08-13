@@ -1,0 +1,33 @@
+name: "🏷️ Create Tag"
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  create-tag:
+    name: "🏷️ Create Tag"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "💻 Checkout"
+        uses: actions/checkout@v3
+
+      - name: "🏷️ Set Tag Output"
+        id: set-tag
+        run: echo "::set-output name=tag_name::v$(Scripts/get-version.sh)"
+
+      - name: "🏷️ Create Tag"
+        uses: actions/github-script@v3
+        env:
+          TAG: ${{ steps.set-tag.outputs.tag_name }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.set-tag.outputs.tag_name }}",
+              sha: context.sha
+            })

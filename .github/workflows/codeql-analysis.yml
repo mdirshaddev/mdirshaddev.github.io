@@ -1,10 +1,10 @@
-name: '🔎 CodeQL'
+name: "🔎 CodeQL"
 
-on: [push,pull_request]
+on: [push, pull_request]
 
 jobs:
   analyze:
-    name: '🔎 Analyze'
+    name: "🔎 Analyze"
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -14,19 +14,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['typescript']
+        language: ["typescript"]
 
     steps:
-      - name: '💻 Checkout'
+      - name: "💻 Checkout"
         uses: actions/checkout@v3
 
-      - name: '⚙️ Initialize CodeQL'
+      - name: "⚙️ Initialize CodeQL"
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
 
-      - name: '🏗️ Autobuild'
+      - name: "🏗️ Autobuild"
         uses: github/codeql-action/autobuild@v2
 
-      - name: '🔎 Perform CodeQL Analysis'
+      - name: "🔎 Perform CodeQL Analysis"
         uses: github/codeql-action/analyze@v2
