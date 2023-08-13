@@ -1,0 +1,47 @@
+name: '🚀 GitHub Pages'
+
+# Only trigger, when the build workflow succeeded
+on:
+  release:
+    types:
+      - 'published'
+
+jobs:
+  deploy:
+    name: '🚀 Deploy'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+
+    steps:
+      - name: '💻 Checkout'
+        uses: actions/checkout@v3
+
+      - name: '⚙️ Setup Node.js v18.17.0'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.17.0
+
+      - name: '💻 Install Dependency'
+        run: pnpm install
+
+      - name: '🏗️ Create Vite production build'
+        run: |
+          export VITE_APP_SUPABASE_URL=${{ secrets.VITE_APP_SUPABASE_URL }}
+          export VITE_APP_SUPABASE_ANON_KEY=${{ secrets.VITE_APP_SUPABASE_ANON_KEY }}
+          export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+          export VITE_APP_SENTRY_DSN=${{ secrets.VITE_APP_SENTRY_DSN }}
+          export VITE_APP_GOOGLE_ANALYTICS=${{ secrets.VITE_APP_GOOGLE_ANALYTICS }}
+          pnpm build
+
+      - name: '📝 Add .nojekyll file'
+        run: touch ./dist/.nojekyll
+
+      - name: '🚀 Deploy Vite App'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages # The branch the action should deploy to.
+          publish_dir: ./dist # The folder the action should deploy.
+          keep_files: false
